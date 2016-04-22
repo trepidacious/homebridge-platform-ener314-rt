@@ -1,7 +1,7 @@
-# homebridge-platform-rcswitch
-[![NPM Version](https://img.shields.io/npm/v/homebridge-platform-rcswitch.svg)](https://www.npmjs.com/package/homebridge-platform-rcswitch)
+# homebridge-platform-energenie
+[![NPM Version](https://img.shields.io/npm/v/homebridge-platform-energenie.svg)](https://www.npmjs.com/package/homebridge-platform-energenie)
 
-RCSwitch plugin for the awesome  [Homebridge](https://github.com/nfarina/homebridge) project.
+Energenie plugin for the [Homebridge](https://github.com/nfarina/homebridge) project based on [homebridge-platform-rcswitch](https://github.com/rainlake/homebridge-platform-rcswitch).
 
 ## Currently supports
 - Etekcity Tap 5 port Power plug
