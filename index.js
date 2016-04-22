@@ -18,17 +18,18 @@ EnergeniePlatform.prototype.accessories = function(callback) {
     var self = this;
     self.accessories = [];
     self.config.switches.forEach(function(sw) {
-        self.accessories.push(new EnergenieAccessory(sw, self.log, self.config));
+        self.accessories.push(new EnergenieAccessory(sw, self.log, self.config, self.commandQueue));
     });
     callback(self.accessories);
 }
 
-function EnergenieAccessory(sw, log, config) {
+function EnergenieAccessory(sw, log, config, commandQueue) {
     var self = this;
     self.name = sw.name;
     self.sw = sw;
     self.log = log;
     self.config = config;
+    self.commandQueue = commandQueue;
     self.currentState = false;
 
     self.service = new Service.Switch(self.name);
