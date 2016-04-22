@@ -1,5 +1,6 @@
 var Service, Characteristic, LastUpdate;
 var energenie = require("energenie");
+var CommandQueue = require('./lib/CommandQueue');
 
 module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
@@ -11,6 +12,7 @@ function EnergeniePlatform(log, config) {
     var self = this;
     self.config = config;
     self.log = log;
+    self.commandQueue = new CommandQueue(self.config.delay ? self.config.delay : 500);
 }
 EnergeniePlatform.prototype.accessories = function(callback) {
     var self = this;
@@ -40,11 +42,25 @@ function EnergenieAccessory(sw, log, config) {
     self.service.getCharacteristic(Characteristic.On).on('set', function(state, cb) {
         self.currentState = state;
         if(self.currentState) {
-          if(self.sw.on.command === "on") energenie.switchOn(self.sw.on.socket)
-          else energenie.switchOf(self.sw.on.socket);
+          if(self.sw.on.command === "on") {
+            self.commandQueue.queue(function() {
+              energenie.switchOn(self.sw.on.socket);
+            });
+          } else {
+            self.commandQueue.queue(function() {
+              energenie.switchOff(self.sw.on.socket);
+            });
+          }
         } else {
-          if(self.sw.off.command === "on") energenie.switchOn(self.sw.off.socket)
-          else energenie.switchOf(self.sw.on.socket);
+          if(self.sw.on.command === "on") {
+            self.commandQueue.queue(function() {
+              energenie.switchOn(self.sw.off.socket);
+            });
+          } else {
+            self.commandQueue.queue(function() {
+              energenie.switchOff(self.sw.off.socket);
+            });
+          }
         }
         cb(null);
     }.bind(self));
