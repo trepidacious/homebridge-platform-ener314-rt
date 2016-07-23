@@ -53,7 +53,7 @@ function EnergenieAccessory(sw, log, config, commandQueue) {
             });
           }
         } else {
-          if(self.sw.on.command === "on") {
+          if(self.sw.on.command === "off") {
             self.commandQueue.queue(function() {
               energenie.switchOn(self.sw.off.socket);
             });
