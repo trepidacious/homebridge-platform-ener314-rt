@@ -1,6 +1,7 @@
 var Service, Characteristic, LastUpdate;
-var energenie = require("energenie");
 var CommandQueue = require('./lib/CommandQueue');
+var spawn = require('child_process').spawn;
+// var spawnSync = require('child_process').spawnSync;
 
 module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
@@ -45,21 +46,25 @@ function EnergenieAccessory(sw, log, config, commandQueue) {
         if(self.currentState) {
           if(self.sw.on.command === "on") {
             self.commandQueue.queue(function() {
-              energenie.switchOn(self.sw.on.socket);
+              // energenie.switchOn(self.sw.on.socket);
+              spawn('python', [__dirname+'/py/switch.py', 'on', self.sw.on.socket]);
             });
           } else {
             self.commandQueue.queue(function() {
-              energenie.switchOff(self.sw.on.socket);
+              // energenie.switchOff(self.sw.on.socket);
+              spawn('python', [__dirname+'/py/switch.py', 'off', self.sw.on.socket]);
             });
           }
         } else {
           if(self.sw.on.command === "off") {
             self.commandQueue.queue(function() {
-              energenie.switchOn(self.sw.off.socket);
+              // energenie.switchOn(self.sw.off.socket);
+              spawn('python', [__dirname+'/py/switch.py', 'on', self.sw.off.socket]);
             });
           } else {
             self.commandQueue.queue(function() {
-              energenie.switchOff(self.sw.off.socket);
+              // energenie.switchOff(self.sw.off.socket);
+              spawn('python', [__dirname+'/py/switch.py', 'off', self.sw.off.socket]);
             });
           }
         }

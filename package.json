@@ -8,16 +8,10 @@
     ],
     "repository": {
         "type": "git",
-        "url": "git://github.com/suda/homebridge-platform-energenie.git"
-    },
-    "bugs": {
-        "url": "https://github.com/suda/homebridge-platform-energenie/issues"
+        "url": "git://github.com/trepidacious/homebridge-platform-energenie.git"
     },
     "engines": {
         "node": ">=0.12.0",
         "homebridge": ">=0.2.0"
-    },
-    "dependencies": {
-        "energenie": "^0.1.1"
     }
 }
