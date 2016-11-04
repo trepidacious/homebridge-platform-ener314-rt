@@ -6,7 +6,7 @@ var spawn = require('child_process').spawn;
 module.exports = function(homebridge) {
     Service = homebridge.hap.Service;
     Characteristic = homebridge.hap.Characteristic;
-    homebridge.registerPlatform("homebridge-platform-energenie", "Energenie", EnergeniePlatform);
+    homebridge.registerPlatform("homebridge-platform-ener314-rt", "ENER314-RT", EnergeniePlatform);
 }
 
 function EnergeniePlatform(log, config) {

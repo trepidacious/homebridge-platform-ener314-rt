@@ -1,14 +1,13 @@
-# homebridge-platform-energenie
-[![NPM Version](https://img.shields.io/npm/v/homebridge-platform-energenie.svg)](https://www.npmjs.com/package/homebridge-platform-energenie)
+# homebridge-platform-ener314-rt
+# [![NPM Version](https://img.shields.io/npm/v/homebridge-platform-energenie.svg)](https://www.npmjs.com/package/homebridge-platform-energenie)
 
-[Energenie Pi-mote](https://energenie4u.co.uk/catalogue/product/ENER314) plugin for the [Homebridge](https://github.com/nfarina/homebridge) project based on [homebridge-platform-rcswitch](https://github.com/rainlake/homebridge-platform-rcswitch).
+[Energenie ENER314-RT Two-way Pi-mote](https://energenie4u.co.uk/catalogue/product/ENER314-RT) plugin for the [Homebridge](https://github.com/nfarina/homebridge) project based on [homebridge-platform-energenie](https://github.com/suda/homebridge-platform-energenie).
 
 # Installation
 
-1. Install [energenie](http://pythonhosted.org/energenie/#installation)
-2. Install homebridge using: `npm install -g homebridge`
-3. Install this plugin using: `npm install -g homebridge-platform-energenie`
-4. Update your configuration file. See the sample below.
+1. Install homebridge using: `npm install -g homebridge`
+2. Install this plugin using: `npm install -g homebridge-platform-ener314-rt`
+3. Update your configuration file. See the sample below.
 
 # Configuration
 
@@ -34,8 +33,8 @@ Note: Some sockets may respond only to `on` commands and turning on/off is done 
 
     "platforms": [
         {
-          "platform": "Energenie",
-          "name": "Energenie Platform",
+          "platform": "ENER314-RT",
+          "name": "ENER314-RT Platform",
           "delay": 500,
           "switches": [
                 {

@@ -1,14 +1,14 @@
 {
-    "name": "homebridge-platform-energenie",
+    "name": "homebridge-platform-ener314-rt",
     "version": "0.1.3",
-    "description": "energenie plugin for homebridge: https://github.com/nfarina/homebridge",
+    "description": "energenie ener314-rt plugin for homebridge: https://github.com/nfarina/homebridge",
     "license": "MIT",
     "keywords": [
         "homebridge-plugin"
     ],
     "repository": {
         "type": "git",
-        "url": "git://github.com/trepidacious/homebridge-platform-energenie.git"
+        "url": "git://github.com/trepidacious/homebridge-platform-ener314-rt.git"
     },
     "engines": {
         "node": ">=0.12.0",
