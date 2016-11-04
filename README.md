@@ -3,6 +3,8 @@
 
 [Energenie ENER314-RT Two-way Pi-mote](https://energenie4u.co.uk/catalogue/product/ENER314-RT) plugin for the [Homebridge](https://github.com/nfarina/homebridge) project based on [homebridge-platform-energenie](https://github.com/suda/homebridge-platform-energenie).
 
+Uses [pyenergie](https://github.com/whaleygeek/pyenergenie) to control ENER314-RT.
+
 # Installation
 
 1. Install homebridge using: `npm install -g homebridge`
