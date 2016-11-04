@@ -44,29 +44,15 @@ function EnergenieAccessory(sw, log, config, commandQueue) {
     self.service.getCharacteristic(Characteristic.On).on('set', function(state, cb) {
         self.currentState = state;
         if(self.currentState) {
-          if(self.sw.on.command === "on") {
-            self.commandQueue.queue(function() {
-              // energenie.switchOn(self.sw.on.socket);
-              spawn('python', [__dirname+'/py/switch.py', 'on', self.sw.on.socket]);
-            });
-          } else {
-            self.commandQueue.queue(function() {
-              // energenie.switchOff(self.sw.on.socket);
-              spawn('python', [__dirname+'/py/switch.py', 'off', self.sw.on.socket]);
-            });
-          }
+          self.commandQueue.queue(function() {
+            console.log("Switch on " + self.sw.name + ", socket " + self.sw.socket)
+            spawn('python', [__dirname+'/py/switch.py', 'on', self.sw.socket]);
+          });
         } else {
-          if(self.sw.on.command === "off") {
-            self.commandQueue.queue(function() {
-              // energenie.switchOn(self.sw.off.socket);
-              spawn('python', [__dirname+'/py/switch.py', 'on', self.sw.off.socket]);
-            });
-          } else {
-            self.commandQueue.queue(function() {
-              // energenie.switchOff(self.sw.off.socket);
-              spawn('python', [__dirname+'/py/switch.py', 'off', self.sw.off.socket]);
-            });
-          }
+          self.commandQueue.queue(function() {
+            console.log("Switch off " + self.sw.name + ", socket " + self.sw.socket)
+            spawn('python', [__dirname+'/py/switch.py', 'off', self.sw.socket]);
+          });
         }
         cb(null);
     }.bind(self));

@@ -24,35 +24,28 @@ Note: Some sockets may respond only to `on` commands and turning on/off is done 
 
  ```javascript
 {
-    "bridge": {
-        "name": "#####",
-        "username": "",
-        "port": 51826,
-        "pin": ""
-    },
+  "bridge": {
+    "name": "#####",
+    "username": "",
+    "port": 51826,
+    "pin": ""
+  },
 
-    "description": "",
+  "description": "",
 
-    "platforms": [
+  "platforms": [
+    {
+      "platform": "ENER314-RT",
+      "name": "ENER314-RT Platform",
+      "delay": 500,
+      "switches": [
         {
-          "platform": "ENER314-RT",
-          "name": "ENER314-RT Platform",
-          "delay": 500,
-          "switches": [
-                {
-                        "name" : "Zap Plug Port 1",
-                        "on": {
-                                "command": "on",
-                                "socket": 1
-                        },
-                        "off": {
-                                "command": "off",
-                                "socket": 1
-                        }
-                }
-          ]
+          "name" : "Switch One",
+          "socket": 1
         }
-    ]
+      ]
+    }
+  ]
 }
 
 ```
