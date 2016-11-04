@@ -43,17 +43,18 @@ function EnergenieAccessory(sw, log, config, commandQueue) {
 
     self.service.getCharacteristic(Characteristic.On).on('set', function(state, cb) {
         self.currentState = state;
-        if(self.currentState) {
+        var command = self.currentState ? 'on' : 'off';
           self.commandQueue.queue(function() {
-            console.log("Switch on " + self.sw.name + ", socket " + self.sw.socket)
-            spawn('python', [__dirname+'/py/switch.py', 'on', self.sw.socket]);
+            console.log('Switch ' + command + ' ' + self.sw.name + ", socket " + self.sw.socket)
+            var cmd = spawn('python', [__dirname+'/py/switch.py', command, self.sw.socket]);
+            cmd.stderr.on('data', function(data) {
+              console.log('ERR: ' + data);
+            });
+            cmd.stdout.on('data', function(data) {
+              console.log('OUT: ' + data);
+            });
+
           });
-        } else {
-          self.commandQueue.queue(function() {
-            console.log("Switch off " + self.sw.name + ", socket " + self.sw.socket)
-            spawn('python', [__dirname+'/py/switch.py', 'off', self.sw.socket]);
-          });
-        }
         cb(null);
     }.bind(self));
 }
